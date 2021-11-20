@@ -27,12 +27,13 @@ exports.userRegistrationDefault = async (req, res, next) => {
 
   try {
     const bodyData = req.body;
-    const query = { username: bodyData.username };
+    const query = { email: bodyData.email };
+    console.log('req body: ',query);
 
     let token;
 
-    const userExists = await User.findOne(query).lean();
-
+    const userExists = await User.findOne({ email: bodyData.email }).lean();
+    console.log('userExists ',userExists);
     
 
     if (userExists) {

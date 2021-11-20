@@ -46,7 +46,7 @@ exports.addToCart = async (req, res, next) => {
 exports.getCartItemByUserId = async (req, res, next) => {
 
     const userId = req.userData.userId;
-    console.log('UserId', userId);
+    // console.log('UserId', userId);
     try {
 
         const data = await User.findOne({_id: userId})

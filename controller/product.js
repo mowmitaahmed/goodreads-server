@@ -257,7 +257,9 @@ exports.getSingleProductBySlug = async (req, res, next) => {
   const productSlug = req.params.slug;
   try {
     const query = { productSlug: productSlug };
-    const data = await Product.findOne(query);
+    const data = await Product.findOne(query)
+    .populate("brand")
+    .populate("category");
     res.status(200).json({
       data: data,
       message: "Product fetch Successfully!",
